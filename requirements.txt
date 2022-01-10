@@ -1,0 +1,13 @@
+logging
+requests
+urllib3
+smtplib
+email
+xlrd==1.2.0
+openpyxl
+configparser
+os
+yaml
+datetime
+time
+json
