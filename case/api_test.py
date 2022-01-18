@@ -81,7 +81,7 @@ class CommonTestCase:
         """
         # 是否有前置条件
         if model.pre_case_id > 0:
-            self.logger.info('用例{0}有前置用例:用例{1}'.format(model.case_id,model.pre_case_id))
+            self.logger.info('用例{0}有前置用例:用例{1}'.format(model.case_id, model.pre_case_id))
             pre_model = models[model.pre_case_id - 1]
             # 递归调用
             pre_response = self.runCase(models, pre_model, **kwargs)
@@ -92,7 +92,7 @@ class CommonTestCase:
             if pre_assert_msg["is_pass"] != 'pass':
                 # 前置条件不通过，直接返回
                 response["msg"] = "前置用例执行不通过——" + pre_response["msg"]
-                self.logger.info('前置用例{0}执行不通过：{1}'.format(model.pre_case_id,pre_response["msg"]))
+                self.logger.info('前置用例{0}执行不通过：{1}'.format(model.pre_case_id, pre_response["msg"]))
                 return response
             # 判断需要case前置条件的是哪个字段
             pre_fields = model.pre_fields
@@ -105,7 +105,8 @@ class CommonTestCase:
                         if header == field_name:
                             field_value = pre_response["data"][field_name]
                             model.headers[field_name] = field_value
-                            self.logger.info('用例{0}的请求头中前置参数：{1}_参数值：{2}获取成功'.format(model.case_id,field_name,field_value))
+                            self.logger.info(
+                                '用例{0}的请求头中前置参数：{1}_参数值：{2}获取成功'.format(model.case_id, field_name, field_value))
                             break
                 elif pre_field["scope"] == "body":
                     for r_body in model.data:
@@ -121,7 +122,7 @@ class CommonTestCase:
         req = RequestUtil()
         response = req.send_rquest(model.method, model.url_host + model.url_adr, model.data, model.headers,
                                    model.req_param_type, **kwargs)
-        self.logger.info('用例{0}请求完成,响应内容：{1}'.format(model.case_id,response))
+        self.logger.info('用例{0}请求完成,响应内容：{1}'.format(model.case_id, response))
         return response
 
     # 4、断言响应内容，更新用例执行情况

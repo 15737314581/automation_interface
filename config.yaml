@@ -5,4 +5,4 @@ Mail-Config:
     - 1065109432@qq.com
     - jjf15737314581jjf@126.com
   mail_host: smtp.126.com
-  mail_title: 商业活动接口自动化测试报告
+  mail_title: 接口自动化测试报告
